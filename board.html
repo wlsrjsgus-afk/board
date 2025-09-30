@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>글쓰기</title>
+    <style>
+        textarea::placeholder {
+            font-size: 450px; 
+            color: #999; 
+            padding-top: 15px;
+            padding-left: 10px;
+        }
+
+        .writing-area {
+            width: 1000px;
+            height: 500px;
+            margin-left: 200px;
+            margin-top: 50px;
+            border: 1px solid #ccc;
+            border-radius: 8px; 
+            font-size: 24px;
+            padding: 15px;
+            box-sizing: border-box; 
+        }
+
+        .button-container {
+            width: 1000px;
+            margin-left: 200px;
+            margin-top: 15px; 
+            text-align: right; 
+        }
+
+        .button-container button {
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <form>
+        <textarea class="writing-area" placeholder='작성'></textarea>
+    </form>
+
+    <div class="button-container">
+        <button onclick="alert('수정을 선택하셨습니다.' )"><a href="">수정하기</button>
+        <button onclick="alert('정말 삭제하시겠습니까?')">삭제하기</button>
+    </div>
+    
+</body>
+</html>
