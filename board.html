@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> 
     <title>글쓰기</title>
     <style>
         textarea::placeholder {
@@ -43,7 +44,7 @@
     </form>
 
     <div class="button-container">
-        <button onclick="alert('수정을 선택하셨습니다.' )"><a href="">수정하기</button>
+        <button onclick="alert('수정을 선택하셨습니다.')"><수정하기></button>
         <button onclick="alert('정말 삭제하시겠습니까?')">삭제하기</button>
     </div>
     
