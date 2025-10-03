@@ -2,52 +2,17 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css')}}"> 
-    <title>작성</title>
-    <style>
-        textarea::placeholder {
-            font-size: 450px; 
-            color: #999; 
-            padding-top: 15px;
-            padding-left: 10px;
-        }
-
-        .writing-area {
-            width: 1000px;
-            height: 500px;
-            margin-left: 200px;
-            margin-top: 50px;
-            border: 1px solid #ccc;
-            border-radius: 8px; 
-            font-size: 24px;
-            padding: 15px;
-            box-sizing: border-box; 
-        }
-
-        .button-container {
-            width: 1000px;
-            margin-left: 200px;
-            margin-top: 15px; 
-            text-align: right; 
-        }
-
-        .button-container button {
-            margin-left: 10px;
-        }
-    </style>
+    <title>글 작성하기</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    
-    <form>
-        <textarea class="writing-area" placeholder='작성'></textarea>
-    </form>
-
-    <div class="button-container">
-        <button onclick="alert('작성이 완료되었습니다.')">완료</button>
-        <button onclick="alert('수정을 선택하셨습니다.')">수정하기</button>
-        <button onclick="alert('정말 삭제하시겠습니까?')">삭제하기</button>
+    <div class="container">
+        <h1>글을 작성하세요</h1>
+        <form action="{{ url_for('write') }}" method="post">
+            <p><input type="text" name="title" placeholder="제목을 입력하세요" required style="width: 100%; padding: 8px;"></p>
+            <p><textarea name="content" rows="15" placeholder="내용을 입력하세요" required style="width: 100%; padding: 8px;"></textarea></p>
+            <p><button type="submit">작성 완료</button></p>
+        </form>
     </div>
-    
 </body>
 </html>
