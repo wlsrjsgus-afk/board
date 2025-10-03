@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>글 작성하기</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>글을 작성하세요</h1>
+        <form action="{{ url_for('write') }}" method="post">
+            <p><input type="text" name="title" placeholder="제목을 입력하세요" required style="width: 100%; padding: 8px;"></p>
+            <p><textarea name="content" rows="15" placeholder="내용을 입력하세요" required style="width: 100%; padding: 8px;"></textarea></p>
+            <p><button type="submit">작성 완료</button></p>
+        </form>
+    </div>
+</body>
+</html>

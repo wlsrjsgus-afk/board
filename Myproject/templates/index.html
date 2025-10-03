@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>으스스 게시판</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div style="text-align: right; margin-bottom: 10px;">
+            {% if 'username' in session %}
+                <span>{{ session.username }}님 환영합니다!</span>
+                <a href="{{ url_for('logout') }}" class="write-button">로그아웃</a>
+            {% else %}
+                <a href="{{ url_for('login') }}" class="write-button">로그인</a>
+                <a href="{{ url_for('register') }}" class="write-button">회원가입</a>
+            {% endif %}
+        </div>
+
+        <a href="{{ url_for('index') }}" class="logo">으스스</a>
+        <a href="{{ url_for('index') }}" class="logo">으스스</a>
+
+        <div class="search-container" style="margin-top: 20px; text-align: center;">
+            <form method="get" action="{{ url_for('index') }}">
+                <input type="text" name="search" placeholder="제목으로 검색" value="{{ search_query or '' }}" style="padding: 8px; width: 50%;">
+                <button type="submit" class="write-button">검색</button>
+            </form>
+        </div>
+        <table class="board-table">
+        <table class="board-table">
+            <thead>
+                <tr>
+                    <th>번호</th>
+                    <th>제목</th>
+                    <th>글쓴이</th>
+                    <th>작성일</th>
+                    <th>조회수</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if posts %}
+                    {% for post in posts %}
+                    <tr>
+                        <td>{{ post.id }}</td>
+                        <td><a href="{{ url_for('view_post', post_id=post.id) }}">{{ post.title }}</a></td>
+                        <td>{{ post.author }}</td>
+                        <td>{{ post.created_at.strftime('%Y-%m-%d') }}</td>
+                        <td>{{ post.views }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="5">작성된 글이 없습니다.</td>
+                    </tr>
+                {% endif %}
+            </tbody>
+        </table>
+
+        <div class="write-button-container">
+            <a href="{{ url_for('write') }}" class="write-button">글쓰기</a>
+        </div>
+    </div>
+</body>
+</html>

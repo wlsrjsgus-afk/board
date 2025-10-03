@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .post-container { line-height: 1.8; }
+        .post-meta { color: #aaa; margin-bottom: 20px; }
+        .post-content { white-space: pre-wrap; } /* 줄바꿈과 공백을 그대로 표시 */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ post.title }}</h1>
+        <div class="post-meta">
+            <span>작성자: {{ post.author }}</span> |
+            <span>작성일: {{ post.created_at.strftime('%Y-%m-%d %H:%M') }}</span> |
+            <span>조회수: {{ post.views }}</span>
+        </div>
+        <hr>
+        <div class="post-content">
+            {{ post.content }}
+        </div>
+        <hr>
+       <div style="text-align: right;">
+    {% if session.get('username') == post.author %}
+        <a href="{{ url_for('edit_post', post_id=post.id) }}" class="write-button">수정</a>
+        <a href="{{ url_for('delete_post', post_id=post.id) }}" class="write-button" onclick="return confirm('정말로 삭제하시겠습니까?');">삭제</a>
+    {% endif %}
+    <a href="{{ url_for('index') }}" class="write-button">목록으로</a>
+        </div>
+    </div>
+</body>
+</html>
