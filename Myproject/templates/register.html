@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>회원가입</h1>
+        <form method="post" action="{{ url_for('register') }}">
+            <p><input type="text" name="username" placeholder="사용자 이름" required></p>
+            <p><input type="password" name="password" placeholder="비밀번호" required></p>
+            <p><input type="password" name="password_confirm" placeholder="비밀번호 확인" required></p>
+            <p><button type="submit">가입하기</button></p>
+        </form>
+        <a href="{{ url_for('login') }}">이미 계정이 있으신가요? 로그인</a>
+    </div>
+</body>
+</html>
